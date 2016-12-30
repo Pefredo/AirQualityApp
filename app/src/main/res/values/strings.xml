@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">AirQualityApp</string>
+    <string name ="textViewCity">Enter a city:</string>
+    <string name="hint_city">city name</string>
+    <string name="button_ok">OK</string>
+    <string name="aqa_info">AirQualityApp is </string>
+    <string name="aqa_pb">- powered by:
+         <a href="http://aqicn.org"> aqicn.org </a>
+    </string>
+    <string name="developped">- developed by: Gosia</string>
+    <string name="imagined">- imagined by: Simon</string>
+    <string name="source">Source is available on:</string>
+    <string name="aqa_git">
+         <a href="https://github.com/Pefredo?tab=repositories"> &gt; Git Hub &lt; </a>
+    </string>
+</resources>
