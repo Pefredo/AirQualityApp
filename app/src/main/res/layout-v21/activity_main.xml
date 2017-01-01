@@ -11,94 +11,60 @@
     tools:context="com.example.gosia.airqualityapp.MainActivity">
 
     <TextView
-        android:text="@string/textViewCity"
+        android:text="@string/textView_source"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="67dp"
-        android:id="@+id/textViewCity"
-        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/textViewSource"
+        android:layout_alignParentBottom="true"
+        android:textSize="16sp" />
+
+    <TextView
+        android:text="@string/info_about_app"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textViewLink"
+        android:textSize="18sp"
+        android:layout_above="@+id/textViewSource"
         android:layout_alignParentStart="true"
-        android:textSize="18sp" />
+        android:layout_marginBottom="54dp"
+        android:layout_alignParentEnd="true" />
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:background="#FF0000FF"
+        android:id="@+id/viewLine"
+        android:layout_centerVertical="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:text="@string/button_ok"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/buttonOK"
+        android:layout_above="@+id/viewLine"
+        android:layout_centerHorizontal="true" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
         android:ems="10"
-        android:layout_below="@+id/textViewCity"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="194dp"
-        android:layout_marginTop="18dp"
         android:id="@+id/editTextCity"
-        android:hint="@string/hint_city" />
-
-    <Button
-        android:text="@string/button_ok"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/buttonOk"
-        android:layout_below="@+id/editTextCity"
-        android:layout_centerHorizontal="true" />
-
-    <View
-        android:layout_width="fill_parent"
-        android:layout_height="1dp"
-        android:background="#FF0000FF"
-        android:layout_marginTop="11dp"
-        android:layout_below="@+id/buttonOk"
+        android:hint="@string/hint_city"
+        android:layout_above="@+id/buttonOK"
         android:layout_alignParentStart="true"
-        android:id="@+id/viewLine" />
+        android:layout_marginBottom="39dp" />
 
     <TextView
-        android:text="@string/aqa_info"
+        android:text="@string/textView_city"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/textViewInfo"
-        android:layout_centerVertical="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true" />
-
-    <TextView
-        android:text="@string/aqa_pb"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textViewInfo"
-        android:layout_alignParentStart="true"
-        android:id="@+id/textViewLink" />
-
-    <TextView
-        android:text="@string/developped"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textViewLink"
-        android:layout_alignParentStart="true"
-        android:id="@+id/textViewDeveloped" />
-
-    <TextView
-        android:text="@string/imagined"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textViewDeveloped"
-        android:layout_alignParentStart="true"
-        android:id="@+id/textViewImagined" />
-
-    <TextView
-        android:text="@string/source"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="71dp"
-        android:id="@+id/textViewSource" />
-
-    <TextView
-        android:text="@string/aqa_git"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="25dp"
-        android:id="@+id/textViewGit"
-        android:textColorLink="?android:attr/colorPrimaryDark" />
+        android:id="@+id/textView_city"
+        android:textSize="24sp"
+        android:layout_marginTop="61dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
 
 </RelativeLayout>

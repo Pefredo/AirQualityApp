@@ -1,0 +1,43 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#09C"
+    android:padding="@dimen/widget_margin">
+
+    <TextView
+        android:text="@string/textView_AQI"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="27dp"
+        android:layout_marginTop="33dp"
+        android:id="@+id/textViewAQIWidget" />
+
+    <TextView
+        android:text="@string/textView_pollution_annotation_widget"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textViewAQIWidget"
+        android:layout_alignStart="@+id/textViewAQIWidget"
+        android:layout_marginTop="23dp"
+        android:id="@+id/textViewPollutionAnnotationWidget" />
+
+    <TextView
+        android:text="@string/textView_temperature_widget"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textViewPollutionAnnotationWidget"
+        android:layout_alignStart="@+id/textViewPollutionAnnotationWidget"
+        android:layout_marginTop="19dp"
+        android:id="@+id/textViewTemperatureWidget" />
+
+    <TextView
+        android:text="@string/textView_pollution_index_widget"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/textViewAQIWidget"
+        android:layout_toEndOf="@+id/textViewTemperatureWidget"
+        android:layout_marginStart="20dp"
+        android:id="@+id/textViewPollutionIndexWidget" />
+</RelativeLayout>

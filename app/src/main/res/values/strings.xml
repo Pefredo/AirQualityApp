@@ -1,16 +1,26 @@
 <resources>
     <string name="app_name">AirQualityApp</string>
-    <string name ="textViewCity">Enter a city:</string>
+    <string name="textView_city">Enter a city:</string>
     <string name="hint_city">city name</string>
     <string name="button_ok">OK</string>
-    <string name="aqa_info">AirQualityApp is </string>
-    <string name="aqa_pb">- powered by:
-         <a href="http://aqicn.org"> aqicn.org </a>
+    <string name="info_about_app"> AirQualityApp is\n- powered by:
+         <a href="http://aqicn.org"> aqicn.org </a>\n- developed by: Gosia\n- imagined by: Simon
     </string>
-    <string name="developped">- developed by: Gosia</string>
-    <string name="imagined">- imagined by: Simon</string>
-    <string name="source">Source is available on:</string>
-    <string name="aqa_git">
-         <a href="https://github.com/Pefredo?tab=repositories"> &gt; Git Hub &lt; </a>
+    <string name="textView_source">Source is available on:\n\n\n
+         <a href="https://github.com/Pefredo?tab=repositories"> &#032;&#032;&#032;&#032;&#032;&#032;&#032; &gt; Git Hub &lt; </a>
     </string>
+    <string name="air_pollution">Air pollution in </string>
+    <string name="air_quality_index">Air quality index:</string>
+    <string name="textView_pollution_annotation">null</string>
+    <string name="textView_temperature">Temp.:</string>
+    <string name="textView_updated_on">Updated on:\n</string>
+    <string name="button_ok_back">OK</string>
+    <string name="appwidget_text">EXAMPLE</string>
+    <string name="enter_city">Enter a city</string>
+    <string name="create_widget">Create widget</string>
+    <string name="textView_AQI">AQI:</string>
+    <string name="textView_pollution_annotation_widget">null</string>
+    <string name="textView_temperature_widget">Temp.:</string>
+    <string name="textView_pollution_index_widget">null</string>
+    <string name="buttonCancel_widget">Cancel</string>
 </resources>
