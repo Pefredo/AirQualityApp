@@ -1,11 +1,22 @@
 package com.example.gosia.airqualityapp;
 
 import android.os.AsyncTask;
+
+import com.example.gosia.airqualityapp.xml.PollutionAppWidgetConfigureActivity;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
+import static android.R.attr.format;
+import static com.example.gosia.airqualityapp.MainActivity.isCityFromClassMainActivity;
 
 public class BackgroundPollutionInfo extends AsyncTask<Void, Void, Void> {
 
@@ -15,9 +26,11 @@ public class BackgroundPollutionInfo extends AsyncTask<Void, Void, Void> {
     private String textWeather;
     private static String aqiIndex;
     private static String localMeasurementTime;
+    private static String timeZoneDifference;
     private static String pollutionAnnotation;
     private static String temperature;
-    private String city = MainActivity.getCityName();
+    private static String city = checkFromWhatClassCityIs();
+
 
     public static String getAqiIndex() {
         return aqiIndex;
@@ -43,7 +56,8 @@ public class BackgroundPollutionInfo extends AsyncTask<Void, Void, Void> {
     @Override
     protected Void doInBackground(Void... params) {
         try {
-            docPollution = Jsoup.connect("http://api.waqi.info/feed/"+ MainActivity.getCityName() + "/?token=7f3db400a2fd73f8dbe7115ad3d4b322237a9d83").ignoreContentType(true).get();
+
+            docPollution = Jsoup.connect("http://api.waqi.info/feed/" + city + "/?token=7f3db400a2fd73f8dbe7115ad3d4b322237a9d83").ignoreContentType(true).get();
             textPollution = docPollution.text();
 
             try {
@@ -62,12 +76,20 @@ public class BackgroundPollutionInfo extends AsyncTask<Void, Void, Void> {
             } catch (JSONException e) {
                 e.printStackTrace();
             }
+            try {
+                JSONObject dataTime = (new JSONObject(textPollution)).getJSONObject("data").getJSONObject("time");
+                timeZoneDifference = dataTime.getString("tz");
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
         } catch (IOException e) {
             e.printStackTrace();
         }
 
+
         try {
-            docWeather =  Jsoup.connect("http://api.openweathermap.org/data/2.5/weather?q=" + MainActivity.getCityName() +"&APPID=c197531d48f9342edd4c5329d4f3d0a9").ignoreContentType(true).get();
+            docWeather = Jsoup.connect("http://api.openweathermap.org/data/2.5/weather?q=" + city + "&APPID=c197531d48f9342edd4c5329d4f3d0a9").ignoreContentType(true).get();
             textWeather = docWeather.text();
 
             try {
@@ -85,7 +107,6 @@ public class BackgroundPollutionInfo extends AsyncTask<Void, Void, Void> {
 
     @Override
     protected void onPostExecute(Void aVoid) {
-
         super.onPostExecute(aVoid);
     }
 
@@ -116,12 +137,51 @@ public class BackgroundPollutionInfo extends AsyncTask<Void, Void, Void> {
         }
     }
 
-    public String convertKelvinToCelsius(String pTempInKelvin){
+    public static String convertKelvinToCelsius(String pTempInKelvin){
         String tempCelsius = "";
         int tempInC = (int)(Double.parseDouble(pTempInKelvin) - 273);
         tempCelsius = String.valueOf(tempInC);
 
         return tempCelsius;
+    }
+
+    public static String checkFromWhatClassCityIs(){
+        if(isCityFromClassMainActivity()){
+           city =  MainActivity.getCityName();
+        }
+        else if(PollutionAppWidgetConfigureActivity.iscityFromClassPollutionAppWidgetConfigureActivity()){
+            city = PollutionAppWidgetConfigureActivity.getCityFromWidget();
+        }
+        return city;
+    }
+
+    public String setTheMeasuementTimeWithTimeZoneDifference(String pTime, String pTimeDifferent){
+
+        Date dateTime = null;
+        Date dateTimeDifferent = null;
+
+        DateFormat formatTime = new SimpleDateFormat("YYY-mmm-ddd HH:mm:ss", Locale.ENGLISH);
+        try {
+             dateTime = formatTime.parse(pTime);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        DateFormat formatTimeDifferent = new SimpleDateFormat("HH:mm", Locale.ENGLISH);
+        try {
+            dateTimeDifferent = formatTimeDifferent.parse(pTimeDifferent);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return "";
+    }
+
+    public static String createWidgetInfo(){
+        String widgetInfo = city  + "\n aqi index:" + aqiIndex +
+                "\nTemp.: " + temperature + " \u2103" +
+                "\n" + pollutionAnnotation;
+
+        return widgetInfo;
     }
 }
 

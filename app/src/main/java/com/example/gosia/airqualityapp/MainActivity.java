@@ -14,6 +14,7 @@ public class MainActivity extends AppCompatActivity {
     private Button buttonOK;
     private EditText editTextCity;
     private static String cityName;
+    private static boolean cityFromClassMainActivity = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +22,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         init();
+    }
+
+    public static boolean isCityFromClassMainActivity() {
+        return cityFromClassMainActivity;
     }
 
     public void init(){
@@ -32,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
 
                 editTextCity = (EditText)findViewById(R.id.editTextCity);
                 cityName = editTextCity.getText().toString();
+                cityFromClassMainActivity = true;
             }
         });
     }

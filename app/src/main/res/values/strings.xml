@@ -23,4 +23,7 @@
     <string name="textView_temperature_widget">Temp.:</string>
     <string name="textView_pollution_index_widget">null</string>
     <string name="buttonCancel_widget">Cancel</string>
+    <string name="configure">Enter a city</string>
+    <string name="add_widget">Create widget</string>
+    <string name="cancel_button">Cancel</string>
 </resources>

@@ -61,8 +61,6 @@ public class PopUpPollution extends Activity  {
         });
     }
 
-
-
     public void loadData() {
         mBackgroundPollutionInfo = new BackgroundPollutionInfo();
         mBackgroundPollutionInfo.execute();

@@ -1,44 +1,48 @@
-package layout;
+package com.example.gosia.airqualityapp.xml;
 
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
 import android.content.Context;
 import android.widget.RemoteViews;
-import android.widget.TextView;
 
 import com.example.gosia.airqualityapp.R;
 
-public class PollutionInfoWidget extends AppWidgetProvider {
-    private TextView textViewPollutionAnnotationWidget;
-    private TextView textViewPollutionIndexWidget;
-    private TextView textViewTemperatureWidget;
-
+public class PollutionAppWidget extends AppWidgetProvider {
 
     static void updateAppWidget(Context context, AppWidgetManager appWidgetManager,
                                 int appWidgetId) {
 
-        CharSequence widgetText = PollutionInfoWidgetConfigureActivity.loadTitlePref(context, appWidgetId);
+        CharSequence widgetText = PollutionAppWidgetConfigureActivity.loadTitlePref(context, appWidgetId);
+        RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.pollution_app_widget);
+        views.setTextViewText(R.id.appwidget_text, widgetText);
 
-        RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.pollution_info_widget);
-        views.setTextViewText(R.id.editTextCityWidget, widgetText);
-
+        // Instruct the widget manager to update the widget
         appWidgetManager.updateAppWidget(appWidgetId, views);
-
-
-
     }
 
     @Override
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
         for (int appWidgetId : appWidgetIds) {
+
+
+            CharSequence widgetText = PollutionAppWidgetConfigureActivity.loadTitlePref(context, appWidgetId);
+            RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.pollution_app_widget);
+            views.setTextViewText(R.id.appwidget_text, widgetText);
+
+            // Instruct the widget manager to update the widget
+            appWidgetManager.updateAppWidget(appWidgetId, views);
+
             updateAppWidget(context, appWidgetManager, appWidgetId);
+
+
         }
     }
 
     @Override
     public void onDeleted(Context context, int[] appWidgetIds) {
+        // When the user deletes the widget, delete the preference associated with it.
         for (int appWidgetId : appWidgetIds) {
-            PollutionInfoWidgetConfigureActivity.deleteTitlePref(context, appWidgetId);
+            PollutionAppWidgetConfigureActivity.deleteTitlePref(context, appWidgetId);
         }
     }
 
